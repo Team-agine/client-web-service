@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8"/>
+    <title>RentWithUs</title>
+    <th:block th:insert="~{fragments/link::link}"/>
+
+</head>
+<body>
+<img th:src="@{/images/header.png}"/>
+
+<th:block th:insert="~{fragments/navbar::#navbar}"/>
+
+<div class="container mt-3">
+    <p>Page d'accueil pour la location de véhicules</p>
+</div>
+
+<th:block th:insert="~{fragments/script::script}"/>
+<!--<div class="bootstrap-iso">-->
+<!--    <div class="container-fluid">-->
+<!--        <div class="row">-->
+<!--            <form class="form-horizontal col-md-12 col-sm-12 col-xs-12" action="#" th:action="@{/booking/first-validation}" method="POST">-->
+
+<!--&lt;!&ndash;            <form class="form-horizontal col-md-12 col-sm-12 col-xs-12" method="post">&ndash;&gt;-->
+<!--                <div class="col-md-6 col-sm-6 col-xs-6">-->
+<!--                    <div class="form-group">-->
+<!--                        <label class="control-label col-sm-4 requiredField" for="startdate">-->
+<!--                            Date de départ-->
+<!--                            <span class="asteriskField">*</span>-->
+<!--                        </label>-->
+<!--                        <div class="col-sm-8">-->
+<!--                            <div class="input-group">-->
+<!--                                <div class="input-group-addon">-->
+<!--                                    <i class="fa fa-calendar"></i>-->
+<!--                                </div>-->
+<!--                                <input class="form-control" id="startdate" th:field="*{startDate}" placeholder="DD/MM/YYYY"-->
+<!--                                       type="text">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="col-md-6 col-sm-6 col-xs-6">-->
+<!--                    <div class="form-group ">-->
+<!--                        <label class="control-label col-sm-4 requiredField" for="enddate">-->
+<!--                            Date de restitution-->
+<!--                            <span class="asteriskField">*</span>-->
+<!--                        </label>-->
+<!--                        <div class="col-sm-8">-->
+<!--                            <div class="input-group">-->
+<!--                                <div class="input-group-addon">-->
+<!--                                    <i class="fa fa-calendar"></i>-->
+<!--                                </div>-->
+<!--                                <input class="form-control" id="enddate" name="enddate" placeholder="DD/MM/YYYY"-->
+<!--                                       type="text">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <div class="col-sm-10 col-sm-offset-2">-->
+<!--                        <button class="btn btn-primary " name="submit" type="submit">-->
+<!--                            Submit-->
+<!--                        </button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--</body>-->
+<!--<script>-->
+<!--    $(document).ready(function () {-->
+<!--        var startDate_input = $('input[name="startdate"]'); //our date input has the name "startdate"-->
+<!--        var endDate_input = $('input[name="enddate"]'); //our date input has the name "enddate"-->
+<!--        var container = $('.bootstrap-iso form-group').length > 0 ? $('.bootstrap-iso form-group').parent() : "body";-->
+<!--        var options = {-->
+<!--            format: 'dd/mm/yyyy',-->
+<!--            container: container,-->
+<!--            todayHighlight: true,-->
+<!--            autoclose: true,-->
+<!--        };-->
+<!--        startDate_input.datepicker(options);-->
+<!--        endDate_input.datepicker(options);-->
+
+<!--    })-->
+<!--</script>-->
+
+</html>
