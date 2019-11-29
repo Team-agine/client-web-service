@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8"/>
+    <title>RentWithUs</title>
+    <th:block th:insert="~{fragments/link::link}"/>
+
+</head>
+<body>
+<img th:src="@{/images/header.png}"/>
+
+<th:block th:insert="~{fragments/navbar::#navbar}"/>
+
+<!--<div class="container mt-3">-->
+<!--    <p>Page d'accueil pour la location de véhicules</p>-->
+<!--</div>-->
+
+<th:block th:insert="~{fragments/script::script}"/>
+<div class="bootstrap-iso">
+    <p>dfbnbzen,qdfbnfdsn,</p>
+    <div class="container-fluid">
+
+        <form class="form-horizontal col-md-12 col-sm-12 col-xs-12" action="#" th:action="@{/booking/last-validation}"
+              th:object="${newValidationForm}" method="POST">
+            <div class="ml-auto mr-auto input-group mb-3">
+                <div class="input-group-addon">
+                    <i class="fa fa-user"></i>
+                </div>
+                <input class="form-control" th:field="*{userId}" th:value="${validationForm.getUserId()}" disabled  type="text">
+            </div>
+            <div class="row">
+                <!--            <form class="form-horizontal col-md-12 col-sm-12 col-xs-12" method="post">-->
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <div class="form-group">
+                        <label class="control-label col-sm-4 requiredField" for="startdate">
+                            Date de départ
+                            <span class="asteriskField">*</span>
+                        </label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input class="form-control" id="startDate" th:value="${validationForm.getStartDate()}"
+
+                                       type="text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <div class="form-group ">
+                        <label class="control-label col-sm-4 requiredField" for="enddate">
+                            Date de restitution
+                            <span class="asteriskField">*</span>
+                        </label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input class="form-control" id="endDate" name="enddate" th:value="${validationForm.getEndDate()}"
+
+                                       type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div>
+<!--                    <p>-->
+<!--                        [-->
+<!--                        {-->
+<!--                        "id": "368gh12",-->
+<!--                        "brand": "Yamaha",-->
+<!--                        "type": "reliant",-->
+<!--                        "color": "purple",-->
+<!--                        "basePrice": 5000.0,-->
+<!--                        "kmPrice": 52.0,-->
+<!--                        "horsePower": 2-->
+<!--                        }-->
+<!--                        ]-->
+<!--                    </p>-->
+                    <div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label>Choisissez votre voiture :</label>
+                                <select>
+                                    <option th:each="vehicle : ${vehicles}" th:utext="${vehicle.brand}+' '+${vehicle.getType()}" th:value="${vehicle.getId()}">...
+                                    </option>
+                                </select>
+                            </div>
+                            <!--========== First Modal ==========-->
+<!--                            <article class="col-md-4 well" th:each="vehicle : ${vehicles}" th:utext="${vehicle.brand}">-->
+<!--                                <h3 class="page-header text-center">La marque de la caisse<br>-->
+<!--                                    <small>Le putain de modele</small>-->
+<!--                                </h3>-->
+<!--                                <br><hr>-->
+<!--                                <span class="carResultRow_Price-now">220,65 €</span>-->
+<!--                                <input type="text" th:value="${vehicle.getId()}">-->
+                                <button class="btn btn-primary text-center" name="subject" type="submit">RESERVEZ</button>
+<!--&lt;!&ndash;                                <div class="text-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <a class="btn btn-primary" href="#successModal" data-toggle="modal"><i class="fa fa-car"></i> Réservez </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--                            </article>-->
+
+<!--                            </article>-->
+
+<!--                            <article class="col-md-4 well">-->
+<!--                                <h3 class="page-header text-center">Shopping Cart Modal<br>-->
+<!--                                    <small>popup shopping cart modal</small>-->
+<!--                                </h3>-->
+<!--                                <br><hr>-->
+<!--                                <div class="text-center">-->
+<!--                                    <a class="btn btn-primary" href="#primaryModal" data-toggle="modal"><i class="glyphicon glyphicon-shopping-cart"></i> Shopping Cart</a>-->
+<!--                                </div>-->
+<!--                            </article>-->
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10 col-sm-offset-2">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!--<span th:if="${brand != null}"><span th:text="${brand[0]}">test</span></span>-->
+<!--    <div th:if="${#strings.equals(status_service,'SERVICE_UNAVAILABLE')}" class="alert alert-info alert-dismissible">-->
+<!--        <button type="button" class="close" data-dismiss="alert">&times;</button>-->
+<!--        Service momentanément indisponible. Merci de réessayer plus tard ...-->
+<!--    </div>-->
+</body>
+
+
+</html>

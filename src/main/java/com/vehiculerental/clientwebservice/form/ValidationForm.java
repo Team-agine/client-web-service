@@ -9,13 +9,29 @@ public class ValidationForm {
 
     private String userId;
 
-
-  //  @DateTimeFormat(pattern = "yyyy-mm-dd")
     private Date startDate;
 
-
-//    @DateTimeFormat(pattern = "yyyy-mm-dd")
     private Date endDate;
+
+    private String vehiculeId;
+
+    private String estimatedKim;
+
+    public String getVehiculeId() {
+        return vehiculeId;
+    }
+
+    public void setVehiculeId(String vehiculeId) {
+        this.vehiculeId = vehiculeId;
+    }
+
+    public String getEstimatedKim() {
+        return estimatedKim;
+    }
+
+    public void setEstimatedKim(String estimatedKim) {
+        this.estimatedKim = estimatedKim;
+    }
 
     public String getUserId() {
         return userId;

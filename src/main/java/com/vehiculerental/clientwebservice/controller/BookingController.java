@@ -21,6 +21,7 @@ import org.springframework.web.client.RestTemplate;
 import javax.validation.Valid;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 
 @Controller
@@ -61,15 +62,7 @@ public class BookingController {
         model.addAttribute("validationForm", validationForm);
         return "booking/validation-form";
     }
-//
-//    @PostMapping(value = "/vehicles/new")
-//    public String checkVehicleInfo(@Valid Vehicle vehicle, BindingResult bindingResult) {
-//        if (bindingResult.hasErrors()) {
-//            return "vehicle/add";
-//        }
-//        restTemplate.postForObject("http://vehicles-api/vehicles", vehicle, Vehicle.class);
-//        return "redirect:/vehicles";
-//    }
+
 
     /**
      * Valide le formulaire
@@ -77,22 +70,38 @@ public class BookingController {
      * @param validationForm et return results.
      */
     @PostMapping(value = "booking/first-validation")
-    public String checkBookingInfo(@Valid ValidationForm validationForm, BindingResult bindingResult) throws ParseException {
+    public String checkBookingInfo(@Valid ValidationForm validationForm, BindingResult bindingResult, Model model){
 //        if (bindingResult.hasErrors()) {
 //            return "validationForm";
 //        }
 
         ResponseEntity<Vehicle[]> result = restTemplate.postForEntity("http://bookings-api/bookings/vehicles-available", validationForm, Vehicle[].class);
         System.out.println(result);
-        return "redirect:/";
+        model.addAttribute("vehicles", Arrays.asList((Vehicle[]) result.getBody()));
+        model.addAttribute("validationForm", validationForm);
+        return "booking/prepare-form";
     }
+
+    @PostMapping(value = "booking/last-validation")
+    public String checkLastBookingInfo(@Valid ValidationForm validationForm, BindingResult bindingResult, Model model){
+//        if (bindingResult.hasErrors()) {
+//            return "validationForm";
+//        }
+
+        ResponseEntity<Booking> result = restTemplate.postForEntity("http://bookings-api/bookings/prepare", validationForm, Booking.class);
+        System.out.println(result);
+        model.addAttribute("booking", result.getBody());
+        //model.addAttribute("ValidationForm", validationForm);
+        return "booking/confirm-form";
+    }
+
 
     @DeleteMapping(value = "/vehicles/{id}")
     public String remove(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
         String url = "http://vehicles-api/vehicles" + id;
         restTemplate.delete(url);
-        return "redirect:/vehicles";
+        return "redirect:/";
     }
 
     @InitBinder
